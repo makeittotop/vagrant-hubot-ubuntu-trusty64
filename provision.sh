@@ -8,6 +8,17 @@ dpkg -s npm &> /dev/null || {
 }
 
 command -v yo &> /dev/null || {
-  npm install -g yo generator-hubot
+  npm install -g yo generator-hubot # hubot coffee-script
 }
+
+stat /vagrant/myhubot &> /dev/null || {
+    mkdir /vagrant/myhubot;
+    cd /vagrant/myhubot && yo hubot --owner="makeittotop@gmail.com" --name="hubot" --defaults
+}
+
+
+#if [ ! -d "myhubot" ]; then
+#  mkdir myhubot
+#fi
+
 
