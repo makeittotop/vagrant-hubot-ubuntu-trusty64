@@ -13,8 +13,11 @@ command -v yo &> /dev/null || {
 
 stat /vagrant/myhubot &> /dev/null || {
     mkdir /vagrant/myhubot;
-    cd /vagrant/myhubot && yo hubot --owner="makeittotop@gmail.com" --name="hubot" --defaults
 }
+
+# Install hubot under the vagrant user as under root it was err'ing out
+su - vagrant -c "cd /vagrant/myhubot && yo hubot --owner="makeittotop@gmail.com" --name="hubot" --defaults"
+#cd /vagrant/myhubot && yo hubot --owner="makeittotop@gmail.com" --name="hubot" --defaults
 
 
 #if [ ! -d "myhubot" ]; then
